@@ -1,6 +1,7 @@
 package features
 
 import (
+	"osm_server/dto"
 	"osm_server/features/zone"
 	"osm_server/repo"
 )
@@ -13,7 +14,9 @@ import (
 // }
 
 type ZoneFeatures interface {
-	CreateZone(name, geoJson string) (int, error)
+	Create(name, geoJson string) (int, error)
+	Get(id int) (dto.Zone, error)
+	GetList(page, limit int) (dto.ZoneList, error)
 }
 
 type Features struct {

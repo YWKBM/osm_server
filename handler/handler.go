@@ -23,7 +23,7 @@ func NewHandler(features features.Features, config *config.Config) *Handler {
 func (h *Handler) Init() *mux.Router {
 	router := mux.NewRouter()
 
-	router.HandleFunc("/zones/create", h.zoneHandler.CreateZone).Methods("POST")
+	router.HandleFunc("/zones/create", h.zoneHandler.Create).Methods("POST")
 
 	return router
 }

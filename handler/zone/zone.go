@@ -15,7 +15,7 @@ func NewZoneHandler(zoneFeatures features.ZoneFeatures) *ZoneHandler {
 	return &ZoneHandler{ZoneFeatures: zoneFeatures}
 }
 
-func (z *ZoneHandler) CreateZone(w http.ResponseWriter, r *http.Request) {
+func (z *ZoneHandler) Create(w http.ResponseWriter, r *http.Request) {
 	var req dto.CreateZoneRequest
 
 	err := json.NewDecoder(r.Body).Decode(&req)
@@ -27,7 +27,7 @@ func (z *ZoneHandler) CreateZone(w http.ResponseWriter, r *http.Request) {
 
 	geoString := string(req.Geom)
 
-	id, err := z.ZoneFeatures.CreateZone(req.Name, geoString)
+	id, err := z.ZoneFeatures.Create(req.Name, geoString)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte(err.Error()))
