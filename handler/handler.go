@@ -24,6 +24,8 @@ func (h *Handler) Init() *mux.Router {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/zones/create", h.zoneHandler.Create).Methods("POST")
+	router.HandleFunc("/zones/get", h.zoneHandler.Get).Methods("GET")
+	router.HandleFunc("/zones/list", h.zoneHandler.GetList).Methods("GET")
 
 	return router
 }
