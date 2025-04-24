@@ -68,7 +68,7 @@ func (z *ZoneRepo) Get(id int) (entities.Zone, error) {
 }
 
 func (z *ZoneRepo) GetList(page, limit int) ([]entities.Zone, error) {
-	rows, err := z.db.Query("SELECT * FROM zones LIMIT = $1 OFFSET $2", page, limit)
+	rows, err := z.db.Query("SELECT * FROM zones OFFSET $1 LIMIT $2", page, limit)
 	if err != nil {
 		return nil, err
 	}

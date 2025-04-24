@@ -70,6 +70,7 @@ func (z *ZoneHandler) Get(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(err.Error()))
 	}
 
+	w.Header().Add("Content-Type", "application/json")
 	w.Write(resp)
 }
 
@@ -94,5 +95,6 @@ func (z *ZoneHandler) GetList(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(err.Error()))
 	}
 
+	w.Header().Add("Content-Type", "application/json")
 	w.Write(resp)
 }
